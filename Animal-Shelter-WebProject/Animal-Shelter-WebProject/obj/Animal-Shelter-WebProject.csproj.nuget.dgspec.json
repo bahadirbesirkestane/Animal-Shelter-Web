@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\O M E N\\Masaüstü\\DERSLER\\2023 YAz okulu\\Web Programlama\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject.csproj": {}
+    "C:\\Users\\O M E N\\Masaüstü\\Animal-Shelter\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\O M E N\\Masaüstü\\DERSLER\\2023 YAz okulu\\Web Programlama\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject.csproj": {
+    "C:\\Users\\O M E N\\Masaüstü\\Animal-Shelter\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\O M E N\\Masaüstü\\DERSLER\\2023 YAz okulu\\Web Programlama\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject.csproj",
+        "projectUniqueName": "C:\\Users\\O M E N\\Masaüstü\\Animal-Shelter\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject.csproj",
         "projectName": "Animal-Shelter-WebProject",
-        "projectPath": "C:\\Users\\O M E N\\Masaüstü\\DERSLER\\2023 YAz okulu\\Web Programlama\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject.csproj",
+        "projectPath": "C:\\Users\\O M E N\\Masaüstü\\Animal-Shelter\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject.csproj",
         "packagesPath": "C:\\Users\\O M E N\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\O M E N\\Masaüstü\\DERSLER\\2023 YAz okulu\\Web Programlama\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\obj\\",
+        "outputPath": "C:\\Users\\O M E N\\Masaüstü\\Animal-Shelter\\Animal-Shelter-WebProject\\Animal-Shelter-WebProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,18 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.9, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

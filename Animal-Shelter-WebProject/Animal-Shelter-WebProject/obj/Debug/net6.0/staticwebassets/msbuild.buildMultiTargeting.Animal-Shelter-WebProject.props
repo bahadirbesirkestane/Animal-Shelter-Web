@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Animal-Shelter-WebProject.props" />
+</Project>
