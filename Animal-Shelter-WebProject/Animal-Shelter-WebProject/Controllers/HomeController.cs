@@ -18,7 +18,7 @@ namespace Animal_Shelter_WebProject.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Kayitsiz()
         {
             return View();
         }
