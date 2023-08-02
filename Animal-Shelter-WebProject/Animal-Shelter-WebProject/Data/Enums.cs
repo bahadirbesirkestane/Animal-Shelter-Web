@@ -16,8 +16,10 @@
 
     public enum SurecDurumlari
     {
-        TalepOlusturuldu = 0,
-        AdminOnayiBekleniyor = 1,
-        SahiplendirmeOnayandi = 2,
+        TalepYok = 0,
+        TalepOlusturuldu = 1,
+        SahibininOnayiBekleniyor = 2,
+        AdminOnayiBekleniyor = 3,
+        SahiplendirmeOnaylandi = 4,
     }
 }

@@ -1,0 +1,192 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/diabetes_tracking.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="shortcut icon" href="~/images/favicon.png" />
+    <link rel="stylesheet" href="~/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <br />
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <h3 class="card-title">Diabetes Tracking</h3>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item nav-language dropdown d-none d-md-block">
+                        <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <div class="nav-language-icon">
+                                <i class="flag-icon flag-icon-tr" title="tr" id="tr"></i>
+                            </div>
+                            <div class="nav-language-text">
+                                <p class="mb-1 text-black">Türkçe</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
+                            <a class="dropdown-item" href="#">
+                                <div class="nav-language-icon mr-2">
+                                    <i class="flag-icon flag-icon-us" title="us" id="us"></i>
+                                </div>
+                                <div class="nav-language-text">
+                                    <p class="mb-1 text-black">English</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <div class="nav-language-icon mr-2">
+                                    <i class="flag-icon flag-icon-tr" title="tr" id="tr"></i>
+                                </div>
+                                <div class="nav-language-text">
+                                    <p class="mb-1 text-black">Türkçe</p>
+                                </div>
+                            </a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">
+                            
+                            <span class="menu-title">Giriş Yap</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="menu-title">/</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Register">
+                            
+                            <span class="menu-title">Kaydol</span>
+                        </a>
+                    </li>
+                    @*<li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <div class="nav-profile-img">
+                                <img src="~/images/faces/face28.png" alt="image">
+                            </div>
+                            <div class="nav-profile-text">
+                                <p id="user_name" class="mb-1 text-black"></p>
+                            </div>
+                        </a>
+                       
+                        <h1>Giriş Yap / Kaydol</h1>
+                    </li>*@
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item nav-category">Main</li>
+                <br />
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Kayitsiz">
+                        <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                        <span class="menu-title">Ana Sayfa</span>
+                    </a>
+                </li>
+                <br />
+                <li class="nav-item active">
+                    <a class="nav-link collapsed" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
+                        <span class="menu-title">Sahiplendirme İşlemleri</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic" style="">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" asp-controller="Pet" asp-action="Index">Sahiplen</a></li>
+                            <li class="nav-item"> <a class="nav-link active" asp-controller="Pet" asp-action="AddPet">Sahiplendir</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <br />
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Animal" asp-action="Index">
+                        <span class="icon-bg"><i class="mdi mdi mdi-gnome menu-icon"></i></span>
+                        <span class="menu-title">Hayvan Dostlarımız</span>
+                    </a>
+                </li>
+                <br />
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Product" asp-action="Index">
+                        <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
+                        <span class="menu-title">PetShop Ürünleri</span>
+                    </a>
+                </li>
+                <br />
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Information" asp-action="Index">
+                        <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
+                        <span class="menu-title">Bilgilerim</span>
+                    </a>
+                </li>
+                <br />
+                <li class="nav-item sidebar-user-actions">
+                    <div class="sidebar-user-menu">
+                        <a asp-controller="Settings" asp-action="Index" class="nav-link">
+                            <i class="mdi mdi-settings menu-icon"></i>
+                            <span class="menu-title">Ayarlar</span>
+                        </a>
+                    </div>
+                </li>
+                <br />
+                <li class="nav-item sidebar-user-actions">
+                    <div class="sidebar-user-menu">
+                        <a asp-controller="Account" asp-action="Logout" class="nav-link">
+                            <i class="mdi mdi-logout menu-icon"></i>
+                            <span class="menu-title">Çıkış yap</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-panel">
+            @RenderBody()
+
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-inner-wraper">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/vendors/chart.js/Chart.min.js"></script>
+    <script src="~/js/off-canvas.js"></script>
+    <script src="~/js/hoverable-collapse.js"></script>
+    <script src="~/js/misc.js"></script>
+    <script src="~/js/chart.js"></script>
+    <script src="~/vendors/jquery-circle-progress/js/circle-progress.min.js"></script>
+    <script src="~/js/dashboard.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

@@ -16,8 +16,48 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\O M E N\Masaüstü\Animal-Shelter\Animal-Shelter-WebProject\Animal-Shelter-WebProject
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Account/AdminLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pbkxvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Adoption/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRvcHRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Adoption/MyAdoption.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRvcHRpb25cTXlBZG9wdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Adoption/Talepler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRvcHRpb25cVGFsZXBsZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Home/Kayitsiz.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxLYXlpdHNpei5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Pet/AddPet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGV0XEFkZFBldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Pet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGV0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Pet/MyPets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGV0XE15UGV0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Shared/Error.cshtml]
@@ -39,3 +79,7 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qu8bdapmj2
+
+[C:/Users/O M E N/Masaüstü/Animal-Shelter/Animal-Shelter-WebProject/Animal-Shelter-WebProject/Views/Shared/_LogOutLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dPdXRMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ybwuz5luc9

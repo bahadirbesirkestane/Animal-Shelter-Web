@@ -4,6 +4,7 @@ using Animal_Shelter_WebProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Animal_Shelter_WebProject.Migrations
 {
     [DbContext(typeof(Animal_Shelter_WebProjectDBContext))]
-    partial class Animal_Shelter_WebProjectDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230802091057_tabloYenilemesi")]
+    partial class tabloYenilemesi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
