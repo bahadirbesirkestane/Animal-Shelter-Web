@@ -13,6 +13,7 @@ namespace Animal_Shelter_WebProject.Models.Entities
         public double? Weight { get; set; }
         public Kisirlik? Kisirlik { get; set; }
         public string? About { get; set; }
+        public SurecDurumlari? SurecDurumlari { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
     }
