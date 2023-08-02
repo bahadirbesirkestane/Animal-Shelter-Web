@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="~/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="shortcut icon" href="~/images/favicon.png" />
+</head>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth">
+                <div class="row flex-grow">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left p-5">
+                            <div class="brand-logo text-center">
+                                <h4>Animal Shelter</h4>
+                                <a class="nav-link" asp-controller="Account" asp-action="AdminLogin">
+                                    <span class="menu-title">Admin Giriş</span>
+                                </a>
+                            </div>
+                            <form class="pt-3" asp-controller="Account" asp-action="Login" method="post">
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-lg" name="Email" placeholder="Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" name="Password" placeholder="Password" required>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Giriş Yap</button>
+                                </div>
+                                <div class="text-center mt-4 font-weight-light">
+                                    Hesabınız yok mu? <a asp-controller="Account" asp-action="Register" class="text-primary">Kayıt Ol</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/vendors/js/vendor.bundle.base.js"></script>
+
+    <script src="~/js/off-canvas.js"></script>
+    <script src="~/js/hoverable-collapse.js"></script>
+    <script src="~/js/misc.js"></script>
+
+</body>
+
