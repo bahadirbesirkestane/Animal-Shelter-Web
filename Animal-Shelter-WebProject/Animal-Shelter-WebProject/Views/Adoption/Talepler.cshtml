@@ -83,12 +83,10 @@
                                     }
                                     else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.AdminOnayiBekleniyor)
                                     {
+                                        <label>Admin Onayı Bekleniyor</label>
 
-                                        <button type="submit" class="btn btn-primary">Admin Onayı Bekleniyor</button>
+                                        <button type="submit" class="btn btn-primary">İletişime Geç</button>
 
-                                        <a asp-controller="Adoption" asp-action="Talepler" asp-route-UserId="@item.Id">
-                                            <button type="submit" class="btn btn-primary">İletişime Geç</button>
-                                        </a>
                                     }
 
 

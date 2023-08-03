@@ -1,4 +1,5 @@
-﻿@using Animal_Shelter_WebProject.Models.Dtos;
+﻿@using Animal_Shelter_WebProject.Data;
+@using Animal_Shelter_WebProject.Models.Dtos;
 
 @model HomeViewModel
 @{
@@ -44,7 +45,15 @@
 
                                 @if (Model.SurecTutucu.ElementAt(i) != null)
                                 {
-                                    <td>@Model.SurecTutucu.ElementAt(i)</td>
+                                    if (@Model.SurecTutucu.ElementAt(i) == SurecDurumlari.TalepOlusturuldu)
+                                    {
+                                        <td>Sahibinin Onayı Bekleniyor</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@Model.SurecTutucu.ElementAt(i)</td>
+                                    }
+
                                 }
                                 else
                                 {
