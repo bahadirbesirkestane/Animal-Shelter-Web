@@ -88,7 +88,7 @@ namespace Animal_Shelter_WebProject.Controllers
 
             };
 
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult MyAdoption()
@@ -119,7 +119,7 @@ namespace Animal_Shelter_WebProject.Controllers
             return View(homeViewModel);
         }
 
-        [HttpPost]
+        //[HttpPost]
         public IActionResult TalepOnayi(int sahiplenenUserId, int PetId)
         {
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
@@ -139,11 +139,12 @@ namespace Animal_Shelter_WebProject.Controllers
                     _petService.TalepDurumUpdate(adoption.Pet, SurecDurumlari.AdminOnayiBekleniyor);
                     break;
                 }
+
             }
             //var pet=_adoptionService.
             //_petService.TalepDurumUpdate()
 
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Home");
         }
 
 
