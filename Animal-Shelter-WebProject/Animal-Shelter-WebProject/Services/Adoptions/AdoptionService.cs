@@ -52,8 +52,14 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
         {
             var adoption = _context.Adoptions.Where(x => x.Id == adoptionId).FirstOrDefault();
 
-            _context.Adoptions.ElementAt(adoptionId).SurecDurumlari = surecDurumu;
+            //_context.Adoptions.ElementAt(adoptionId).SurecDurumlari=surecDurumu;
             //_context.Pets.ElementAt(0).suer
+
+            if (adoption != null)
+            {
+                adoption.SurecDurumlari = surecDurumu;
+            }
+
 
             _context.SaveChanges();
         }

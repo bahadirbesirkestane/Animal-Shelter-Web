@@ -84,7 +84,7 @@ namespace Animal_Shelter_WebProject.Services.Pets
         {
             var pet = _context.Pets.Where(x => x.Id == petId).FirstOrDefault();
 
-            //pet.SurecDurumlari = surecDurumu;
+            pet.SurecDurumlari = surecDurumu;
 
             //_context.Pets.
 
