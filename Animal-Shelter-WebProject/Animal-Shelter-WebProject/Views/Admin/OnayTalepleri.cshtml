@@ -1,0 +1,118 @@
+﻿@using Animal_Shelter_WebProject.Models.Dtos;
+@model AdminGetModel
+
+
+<div class="row">
+    <div class="col-lg-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+                <p class="card-description">
+                    <h4 class="card-title">Hayvan Sahipilerinin Bilgileri</h4>
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Adı </th>
+                            <th> E-Posta Adresi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.SahibiUserList)
+                        {
+                            <tr>
+                                <td>@item.FirstName </td>
+                                <td>@item.Email</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+                <p class="card-description">
+                    <h4 class="card-title">Hayvanların Bilgileri</h4>
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Adı </th>
+                            <th> Cinsi </th>
+                            <th> Yaşı </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.PetInfoList)
+                        {
+                            <tr>
+                                <td>@item.Name </td>
+                                <td>@item.Breed</td>
+                                <td>@item.AgeOrMonth</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-description">
+                    <h4 class="card-title">Hayvanı Sahiplenenlerin Bilgileri</h4>
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Adı </th>
+                            <th> E-Posta Adresi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.SahiplenenUserList)
+                        {
+                            <tr>
+                                <td>@item.FirstName </td>
+                                <td>@item.Email</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-description">
+                    <h4 class="card-title">Onay</h4>
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Adoptions)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Adoption" asp-action="Onaylandi" asp-route-adoptionId="@item.Id">
+                                        <button type="submit" class="btn btn-primary btn-sm">Onayla</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>
+           
