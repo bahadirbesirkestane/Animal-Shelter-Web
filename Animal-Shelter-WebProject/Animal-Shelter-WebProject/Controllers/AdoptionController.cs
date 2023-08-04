@@ -147,7 +147,15 @@ namespace Animal_Shelter_WebProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Onaylandi(int adoptionId)
+        {
+            var adoption=_adoptionService.GetById(adoptionId);
 
+            _adoptionService.TalepDurumUpdate(adoption.Id, SurecDurumlari.SahiplendirmeOnaylandi);
+            _petService.TalepDurumUpdate(adoption.Pet, SurecDurumlari.SahiplendirmeOnaylandi);
+
+            return View();
+        }
 
     }
 }

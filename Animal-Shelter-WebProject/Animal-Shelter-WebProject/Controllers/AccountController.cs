@@ -54,7 +54,7 @@ namespace Animal_Shelter_WebProject.Controllers
             SaveCookie(admin.AdminEmail, admin.Id);
 
             //return RedirectToAction("Index", "Information");
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Admin");
         }
 
 
@@ -114,7 +114,7 @@ namespace Animal_Shelter_WebProject.Controllers
 
             HttpContext.Session.Clear();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Kayitsiz", "Home");
         }
         [NonAction]
         private void SaveCookie(string email, int id)

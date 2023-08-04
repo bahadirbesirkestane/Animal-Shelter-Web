@@ -35,6 +35,12 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
             _context.SaveChanges();
 
         }
+        public Adoption GetById(int Id)
+        {
+            var adoption = _context.Adoptions.Where(x => x.Id == Id).FirstOrDefault();
+
+            return adoption;
+        }
         public List<Adoption> GetByPetId(int petId)
         {
             var adoptions = _context.Adoptions.Where(x => x.Pet == petId).ToList();
@@ -44,6 +50,23 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
         public List<Adoption> GetBySahiplenenId(int sahiplenenId)
         {
             var adoptions = _context.Adoptions.Where(x => x.Sahiplenen == sahiplenenId).ToList();
+
+            return adoptions;
+        }
+
+        public List<Adoption> GetAllAdoptions(SurecDurumlari surecDurumu)
+        {
+            var adoptions=new List<Adoption>();
+            if (surecDurumu == SurecDurumlari.TalepOlusturuldu)
+            {
+                adoptions = (from Adoptions in _context.Adoptions
+                                 select Adoptions).ToList();
+            }
+            else
+            {
+                adoptions=_context.Adoptions.Where(x=>x.SurecDurumlari == surecDurumu).ToList();
+            }
+            
 
             return adoptions;
         }
