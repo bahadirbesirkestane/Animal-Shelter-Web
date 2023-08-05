@@ -5,6 +5,7 @@ using Animal_Shelter_WebProject.Services.Adoptions;
 using Animal_Shelter_WebProject.Services.Pets;
 using Animal_Shelter_WebProject.Services.Users;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Animal_Shelter_WebProject.Controllers
@@ -26,9 +27,12 @@ namespace Animal_Shelter_WebProject.Controllers
             _adoptionService = adoptionService;
         }
 
+        [Authorize]
         public IActionResult Index(int petUserId, int petId)
         {
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
+
+            
 
             var homeViewModel = new HomeViewModel()
             {

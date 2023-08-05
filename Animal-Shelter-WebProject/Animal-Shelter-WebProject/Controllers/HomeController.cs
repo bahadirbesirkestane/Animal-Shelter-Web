@@ -1,9 +1,12 @@
 ﻿using Animal_Shelter_WebProject.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Animal_Shelter_WebProject.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -13,6 +16,7 @@ namespace Animal_Shelter_WebProject.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -20,6 +24,10 @@ namespace Animal_Shelter_WebProject.Controllers
 
         public IActionResult Kayitsiz()
         {
+            HttpContext.SignOutAsync();
+
+            HttpContext.Session.Clear();
+
             return View();
         }
 

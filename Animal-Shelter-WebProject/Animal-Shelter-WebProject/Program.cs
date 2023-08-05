@@ -5,7 +5,10 @@ using Animal_Shelter_WebProject.Services.Password;
 using Animal_Shelter_WebProject.Services.Pets;
 using Animal_Shelter_WebProject.Services.Users;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,11 +32,6 @@ builder.Services.AddScoped<IPetService, PetService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IAdoptionService, AdoptionService>();
 
-//builder.Services.AddScoped<IMedicineService, MedicineService>();
-//builder.Services.AddScoped<ITrackingService, TrackingService>();
-//builder.Services.AddScoped<IInformationService, InformationService>();
-
-
 
 builder.Services.AddSession(option =>
 {
@@ -45,7 +43,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
-app.UseAuthentication();
+
 
 if (!app.Environment.IsDevelopment())
 {
@@ -58,6 +56,7 @@ app.UseSession();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

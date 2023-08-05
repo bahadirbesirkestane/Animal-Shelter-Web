@@ -6,6 +6,7 @@ using Animal_Shelter_WebProject.Services.Users;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Animal_Shelter_WebProject.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Animal_Shelter_WebProject.Controllers
 {
@@ -25,23 +26,26 @@ namespace Animal_Shelter_WebProject.Controllers
             _userService = userService;
             _adoptionService = adoptionService;
         }
+        
         [HttpGet]
         public IActionResult Index()
         {
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
-            var pets = _service.GetAllPets();
-
-            var homeViewModel = new HomeViewModel()
+            if(userId==0)
             {
-                Pets = _service.GetAll(userId),
-                UserInfo = _userService.GetById(userId),
-
-            };
-            //var petsDto = _service.GetAll(userId);
+                ViewBag.LayoutName = "~/Views/Shared/_LogOutLayout.cshtml";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+            }
+            var pets = _service.GetAllPets();
 
             return View(pets);
         }
+
+        [Authorize]
         [HttpGet]
         public IActionResult AddPet()
         {
@@ -65,21 +69,7 @@ namespace Animal_Shelter_WebProject.Controllers
 
             var myPets = _service.GetById(userId);
 
-            //var talepler= _adoptionService.GetBySahibiId(userId);
-
-            //List<User> sahiplenenler= new List<User>();
-
-            //foreach (var talep in talepler)
-            //{
-            //    sahiplenenler.Add(_userService.GetById(talep.Sahiplenen));
-            //}
-
-            //var homeViewModel = new HomeViewModel()
-            //{
-            //    Adoptions = talepler,
-            //    PetList = myPets,
-            //    Users = sahiplenenler,
-            //};
+           
 
             return View(myPets);
         }
@@ -95,5 +85,6 @@ namespace Animal_Shelter_WebProject.Controllers
         {
             return RedirectToAction("Adoption", "Index", petGetDto);
         }
+
     }
 }
