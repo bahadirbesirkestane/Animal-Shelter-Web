@@ -1,5 +1,6 @@
 ﻿@{
     Layout = ViewBag.LayoutName;
+    var dil = TempData["dil"];
 }
 
 
@@ -7,63 +8,128 @@
 
 @model List<Pet>
 
-<div>
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Striped Table</h4>
-                <p class="card-description">
-                    <h4 class="card-title">Hayvanlar</h4>
-                </p>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th> Adı </th>
-                            <th> Cinsiyeti</th>
-                            <th> Yaşı </th>
-                            <th> Cinsi </th>
-                            <th> Doğum Tarihi </th>
-                            <th> Kilo </th>
-                            <th> Kısırlık </th>
-                            <th> Açıklama </th>
-                            <th> Sahiplenme </th>
+@if (dil == "us")
+{
+    <div>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                    <p class="card-description">
+                        <h4 class="card-title">Animals</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>@item.Name </td>
-                                <td>@item.Gender</td>
-                                <td> @item.AgeOrMonth </td>
-                                <td> @item.Breed </td>
-                                <td> @item.BirthDate.Value.ToString("dd MMMM yyyy") </td>
-                                <td> @item.Weight </td>
-                                <td> @item.Kisirlik </td>
-                                <td> @item.About </td>
-                                <td>
+                                <th> Name </th>
+                                <th> Gender</th>
+                                <th> Age </th>
+                                <th> Breed </th>
+                                <th> Date of birth </th>
+                                <th> Weight </th>
+                                <th> Neutered </th>
+                                <th> Explanation </th>
+                                <th> Adoption </th>
 
-                                    <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id">
-                                        <button type="submit" class="btn btn-primary">Sahiplen</button>
-                                    </a>
-
-                                </td>
                             </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name </td>
+                                    <td>@item.Gender</td>
+                                    <td> @item.AgeOrMonth </td>
+                                    <td> @item.Breed </td>
+                                    <td> @item.BirthDate.Value.ToString("dd MMMM yyyy") </td>
+                                    <td> @item.Weight </td>
+                                    <td> @item.Kisirlik </td>
+                                    <td> @item.About </td>
+                                    <td>
 
-                        }
-                    </tbody>
-                </table>
+                                        <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id" asp-route-dil="us">
+                                            <button type="submit" class="btn btn-primary">Adopt</button>
+                                        </a>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <br />
+        <div class="col-lg-12 text-center">
+            <a asp-controller="Pet" asp-action="AddPet" asp-route-dil="us" asp-route-log="In">
+                <button type="button" class="btn btn-primary">Add Animal</button>
+            </a>
+        </div>
+        <br />
     </div>
-    <br />
-    <div class="col-lg-12 text-center">
-        <a asp-controller="Pet" asp-action="AddPet">
-            <button type="button" class="btn btn-primary">Hayvan Ekle</button>
-        </a>
+}
+else
+{
+    <div>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+
+                    <p class="card-description">
+                        <h4 class="card-title">Hayvanlar</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Adı </th>
+                                <th> Cinsiyeti</th>
+                                <th> Yaşı </th>
+                                <th> Cinsi </th>
+                                <th> Doğum Tarihi </th>
+                                <th> Kilo </th>
+                                <th> Kısırlık </th>
+                                <th> Açıklama </th>
+                                <th> Sahiplenme </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name </td>
+                                    <td>@item.Gender</td>
+                                    <td> @item.AgeOrMonth </td>
+                                    <td> @item.Breed </td>
+                                    <td> @item.BirthDate.Value.ToString("dd MMMM yyyy") </td>
+                                    <td> @item.Weight </td>
+                                    <td> @item.Kisirlik </td>
+                                    <td> @item.About </td>
+                                    <td>
+
+                                        <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id">
+                                            <button type="submit" class="btn btn-primary">Sahiplen</button>
+                                        </a>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="col-lg-12 text-center">
+            <a asp-controller="Pet" asp-action="AddPet">
+                <button type="button" class="btn btn-primary">Hayvan Ekle</button>
+            </a>
+        </div>
+        <br />
     </div>
-    <br />
-</div>
+
+}
 
 

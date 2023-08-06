@@ -28,8 +28,22 @@ namespace Animal_Shelter_WebProject.Controllers
         }
 
         [Authorize]
-        public IActionResult Index(int petUserId, int petId)
+        public IActionResult Index(int petUserId, int petId,string? dil)
         {
+            if (dil == "us")
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
+
+                TempData["dil"] = "us";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+
+                TempData["dil"] = "tr";
+            }
+
+
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
             
@@ -44,8 +58,21 @@ namespace Animal_Shelter_WebProject.Controllers
             return View(homeViewModel);
         }
 
-        public IActionResult Talepler(int petUserId, int petId)
+        public IActionResult Talepler(int petUserId, int petId,string? dil)
         {
+            if (dil == "us")
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
+
+                TempData["dil"] = "us";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+
+                TempData["dil"] = "tr";
+            }
+
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
             var pet = _petService.GetByPetId(petId);
@@ -95,8 +122,21 @@ namespace Animal_Shelter_WebProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult MyAdoption()
+        public IActionResult MyAdoption(string? dil, string? log)
         {
+            if (dil == "us")
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
+
+                TempData["dil"] = "us";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+
+                TempData["dil"] = "tr";
+            }
+
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
             var MyAdoption = _adoptionService.GetBySahiplenenId(userId);

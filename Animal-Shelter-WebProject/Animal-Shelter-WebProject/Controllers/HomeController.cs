@@ -31,6 +31,27 @@ namespace Animal_Shelter_WebProject.Controllers
             return View();
         }
 
+        public IActionResult Dil(string dil, string log)
+        {
+            if (dil == "us")
+            {
+                if (log == "In")
+                {
+                    ViewBag.LangLayout = "~/Views/Shared/_en_usLayout.cshtml";
+                }
+                else // out
+                {
+                    ViewBag.LangLayout = "~/Views/Shared/_en_usLogOutLayout.cshtml";
+                }
+            }
+            else
+            {
+                //ViewBag.LangLayout= "~/Views/Shared/_LogOutLayout.cshtml";
+            }
+           
+
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

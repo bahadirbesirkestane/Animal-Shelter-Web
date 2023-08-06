@@ -3,110 +3,229 @@
 @model HomeViewModel
 @{
     int i = 0;
+    Layout = ViewBag.LayoutName;
+    var dil = TempData["dil"];
 }
 
-<div>
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Striped Table</h4>
-                <p class="card-description">
-                    <h4 class="card-title">Hayvanlar</h4>
-                </p>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th> Adı </th>
-                            <th> Cinsiyeti</th>
-                            <th> Yaşı </th>
-                            <th> Cinsi </th>
-                            <th> Doğum Tarihi </th>
-                            <th> Kilo </th>
-                            <th> Kısırlık </th>
-                            <th> Açıklama </th>
+
+@if(dil=="us")
+{
+
+    <div>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Striped Table</h4>
+                    <p class="card-description">
+                        <h4 class="card-title">Animal</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Name </th>
+                                <th> Gender</th>
+                                <th> Age </th>
+                                <th> Breed </th>
+                                <th> Date of Birth </th>
+                                <th> Weight </th>
+                                <th> Neutered </th>
+                                <th> Explanation </th>
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>@Model.PetInfo.Name </td>
-                            <td>@Model.PetInfo.Gender</td>
-                            <td> @Model.PetInfo.AgeOrMonth </td>
-                            <td> @Model.PetInfo.Breed </td>
-                            <td> @Model.PetInfo.BirthDate.Value.ToString("dd MMMM yyyy") </td>
-                            <td> @Model.PetInfo.Weight </td>
-                            <td> @Model.PetInfo.Kisirlik </td>
-                            <td> @Model.PetInfo.About </td>
-                            @* <td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.PetInfo.Name </td>
+                                <td>@Model.PetInfo.Gender</td>
+                                <td> @Model.PetInfo.AgeOrMonth </td>
+                                <td> @Model.PetInfo.Breed </td>
+                                <td> @Model.PetInfo.BirthDate.Value.ToString("dd MMMM yyyy") </td>
+                                <td> @Model.PetInfo.Weight </td>
+                                <td> @Model.PetInfo.Kisirlik </td>
+                                <td> @Model.PetInfo.About </td>
+                                @* <td>
 
                             <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id">
                             <button type="submit" class="btn btn-primary">Sahiplen</button>
                             </a>
 
                             </td>*@
-                        </tr>
-                    </tbody>
-                </table>
-                <p class="card-description">
-                    <h4 class="card-title">Talep Edenlerin Bilgileri</h4>
-                </p>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th> Adı </th>
-                            <th> Soyadı </th>
-                            <th> Email </th>
-                            <th> Hayvan Sahiplenme Tecrübesi </th>
-                            <th></th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach (var item in Model.Users)
-                        {
-                            <tr>
-                                <td>@item.FirstName </td>
-                                <td>@item.LastName</td>
-                                <td> @item.Email </td>
-                                <td> @Model.Temp.ElementAt(i) </td>
-                                <td>
-                                    @if (Model.PetInfo.SurecDurumlari == SurecDurumlari.TalepOlusturuldu)
-                                    {
-                                        <a asp-controller="Adoption" asp-action="TalepOnayi" asp-route-sahiplenenUserId="@item.Id" asp-route-PetId="@Model.PetInfo.Id">
-                                            <button type="submit" class="btn btn-primary">Talebi Onayla</button>
-                                        </a>
-                                        <a asp-controller="Adoption" asp-action="Talepler" asp-route-UserId="@item.Id">
-                                            <button type="submit" class="btn btn-primary">İletişime Geç</button>
-                                        </a>
-                                    }
-                                    else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.AdminOnayiBekleniyor)
-                                    {
-                                        <label>Admin Onayı Bekleniyor</label>
-
-                                        <button type="submit" class="btn btn-primary">İletişime Geç</button>
-
-                                    }
-                                    else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.SahiplendirmeOnaylandi)
-                                    {
-                                        <label>Sahiplendirme Onaylandı</label>
-
-                                        <button type="submit" class="btn btn-primary">İletişime Geç</button>
-
-                                    }
-
-
-                                </td>
                             </tr>
+                        </tbody>
+                    </table>
+                    <p class="card-description">
+                        <h4 class="card-title">Information of Requesters</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Firstname </th>
+                                <th> Lastname </th>
+                                <th> Email </th>
+                                <th> Animal Adoption Experience </th>
+                                <th></th>
 
-                            i++;
-                        }
-                    </tbody>
-                </table>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.Users)
+                            {
+                                <tr>
+                                    <td>@item.FirstName </td>
+                                    <td>@item.LastName</td>
+                                    <td> @item.Email </td>
+                                    <td> @Model.Temp.ElementAt(i) </td>
+                                    <td>
+                                        @if (Model.PetInfo.SurecDurumlari == SurecDurumlari.TalepOlusturuldu)
+                                        {
+                                            <a asp-controller="Adoption" asp-action="TalepOnayi" asp-route-sahiplenenUserId="@item.Id" asp-route-PetId="@Model.PetInfo.Id">
+                                                <button type="submit" class="btn btn-primary">Approve Request</button>
+                                            </a>
+                                            <a asp-controller="Adoption" asp-action="Talepler" asp-route-UserId="@item.Id">
+                                                <button type="submit" class="btn btn-primary">Contact Us</button>
+                                            </a>
+                                        }
+                                        else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.AdminOnayiBekleniyor)
+                                        {
+                                            <label>Waiting for Admin Approval</label>
+
+                                            <button type="submit" class="btn btn-primary">Contact Us</button>
+
+                                        }
+                                        else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.SahiplendirmeOnaylandi)
+                                        {
+                                            <label>Adoption Confirmed</label>
+
+                                            <button type="submit" class="btn btn-primary">Contact Us</button>
+
+                                        }
+
+
+                                    </td>
+                                </tr>
+
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+}
+else
+{
+
+    <div>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Striped Table</h4>
+                    <p class="card-description">
+                        <h4 class="card-title">Hayvanlar</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Adı </th>
+                                <th> Cinsiyeti</th>
+                                <th> Yaşı </th>
+                                <th> Cinsi </th>
+                                <th> Doğum Tarihi </th>
+                                <th> Kilo </th>
+                                <th> Kısırlık </th>
+                                <th> Açıklama </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.PetInfo.Name </td>
+                                <td>@Model.PetInfo.Gender</td>
+                                <td> @Model.PetInfo.AgeOrMonth </td>
+                                <td> @Model.PetInfo.Breed </td>
+                                <td> @Model.PetInfo.BirthDate.Value.ToString("dd MMMM yyyy") </td>
+                                <td> @Model.PetInfo.Weight </td>
+                                <td> @Model.PetInfo.Kisirlik </td>
+                                <td> @Model.PetInfo.About </td>
+                                @* <td>
+
+                            <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id">
+                            <button type="submit" class="btn btn-primary">Sahiplen</button>
+                            </a>
+
+                            </td>*@
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="card-description">
+                        <h4 class="card-title">Talep Edenlerin Bilgileri</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Adı </th>
+                                <th> Soyadı </th>
+                                <th> Email </th>
+                                <th> Hayvan Sahiplenme Tecrübesi </th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.Users)
+                            {
+                                <tr>
+                                    <td>@item.FirstName </td>
+                                    <td>@item.LastName</td>
+                                    <td> @item.Email </td>
+                                    <td> @Model.Temp.ElementAt(i) </td>
+                                    <td>
+                                        @if (Model.PetInfo.SurecDurumlari == SurecDurumlari.TalepOlusturuldu)
+                                        {
+                                            <a asp-controller="Adoption" asp-action="TalepOnayi" asp-route-sahiplenenUserId="@item.Id" asp-route-PetId="@Model.PetInfo.Id">
+                                                <button type="submit" class="btn btn-primary">Talebi Onayla</button>
+                                            </a>
+                                            <a asp-controller="Adoption" asp-action="Talepler" asp-route-UserId="@item.Id">
+                                                <button type="submit" class="btn btn-primary">İletişime Geç</button>
+                                            </a>
+                                        }
+                                        else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.AdminOnayiBekleniyor)
+                                        {
+                                            <label>Admin Onayı Bekleniyor</label>
+
+                                            <button type="submit" class="btn btn-primary">İletişime Geç</button>
+
+                                        }
+                                        else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.SahiplendirmeOnaylandi)
+                                        {
+                                            <label>Sahiplendirme Onaylandı</label>
+
+                                            <button type="submit" class="btn btn-primary">İletişime Geç</button>
+
+                                        }
+
+
+                                    </td>
+                                </tr>
+
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
 
 

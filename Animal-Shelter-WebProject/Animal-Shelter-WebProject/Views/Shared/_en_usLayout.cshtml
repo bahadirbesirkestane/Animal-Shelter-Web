@@ -31,11 +31,11 @@
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-language dropdown d-none d-md-block">
                         <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                            <div class="nav-language-icon">
-                                <i class="flag-icon flag-icon-tr" title="tr" id="tr"></i>
+                            <div class="nav-language-icon mr-2">
+                                <i class="flag-icon flag-icon-us" title="us" id="us"></i>
                             </div>
                             <div class="nav-language-text">
-                                <p class="mb-1 text-black">Türkçe</p>
+                                <p class="mb-1 text-black">English</p>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
@@ -166,22 +166,22 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Home" asp-action="Index">
                         <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                        <span class="menu-title">Ana Sayfa</span>
+                        <span class="menu-title">Home Page</span>
                     </a>
                 </li>
                 <br />
                 <li class="nav-item active">
                     <a class="nav-link collapsed" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                         <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-                        <span class="menu-title">Sahiplendirme İşlemleri</span>
+                        <span class="menu-title">Adoption Transactions</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="ui-basic" style="">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" asp-controller="Pet" asp-action="Index">Sahiplen</a></li>
-                            <li class="nav-item"> <a class="nav-link active" asp-controller="Pet" asp-action="AddPet">Sahiplendir</a></li>
-                            <li class="nav-item"> <a class="nav-link" asp-controller="Pet" asp-action="MyPets">Hayvanlarım</a></li>
-                            <li class="nav-item"> <a class="nav-link" asp-controller="Adoption" asp-action="MyAdoption">Sahiplenme Taleplerim</a></li>
+                            <li class="nav-item"> <a class="nav-link" asp-controller="Pet" asp-action="Index" asp-route-dil="us" asp-route-log="In">Animal Adoption</a></li>
+                            <li class="nav-item"> <a class="nav-link active" asp-controller="Pet" asp-action="AddPet" asp-route-dil="us" asp-route-log="In">Add Animal</a></li>
+                            <li class="nav-item"> <a class="nav-link" asp-controller="Pet" asp-action="MyPets" asp-route-dil="us" asp-route-log="In">My Animals</a></li>
+                            <li class="nav-item"> <a class="nav-link" asp-controller="Adoption" asp-action="MyAdoption" asp-route-dil="us" asp-route-log="In">My Adoption Requests</a></li>
                         </ul>
                     </div>
                 </li>
@@ -190,21 +190,21 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Animal" asp-action="Index">
                         <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                        <span class="menu-title">Hayvan Dostlarımız</span>
+                        <span class="menu-title">Our Animal Friends</span>
                     </a>
                 </li>
                 <br />
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Product" asp-action="Index">
                         <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                        <span class="menu-title">PetShop Ürünleri</span>
+                        <span class="menu-title">PetShop</span>
                     </a>
                 </li>
                 <br />
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Information" asp-action="Index">
                         <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-                        <span class="menu-title">Bilgilerim</span>
+                        <span class="menu-title">Information</span>
                     </a>
                 </li>
                 <br />
@@ -212,7 +212,7 @@
                     <div class="sidebar-user-menu">
                         <a asp-controller="Settings" asp-action="Index" class="nav-link">
                             <i class="mdi mdi-settings menu-icon"></i>
-                            <span class="menu-title">Ayarlar</span>
+                            <span class="menu-title">Settings</span>
                         </a>
                     </div>
                 </li>
@@ -221,7 +221,7 @@
                     <div class="sidebar-user-menu">
                         <a asp-controller="Account" asp-action="Logout" class="nav-link">
                             <i class="mdi mdi-logout menu-icon"></i>
-                            <span class="menu-title">Çıkış yap</span>
+                            <span class="menu-title">Log Out</span>
                         </a>
                     </div>
                 </li>

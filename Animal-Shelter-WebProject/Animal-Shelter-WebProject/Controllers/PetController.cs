@@ -28,17 +28,40 @@ namespace Animal_Shelter_WebProject.Controllers
         }
         
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string? dil, string? log)
         {
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
             if(userId==0)
             {
-                ViewBag.LayoutName = "~/Views/Shared/_LogOutLayout.cshtml";
+                if (dil == "us")
+                {
+                    ViewBag.LayoutName = "~/Views/Shared/_en_usLogOutLayout.cshtml";
+
+                    TempData["dil"] = "us";
+                }
+                else
+                {
+                    ViewBag.LayoutName = "~/Views/Shared/_LogOutLayout.cshtml";
+
+                    TempData["dil"] = "tr";
+                }
             }
             else
             {
-                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+                if (dil == "us")
+                {
+                    ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
+
+                    TempData["dil"] = "us";
+                }
+                else
+                {
+                    ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+
+                    TempData["dil"] = "tr";
+                }
+                
             }
             var pets = _service.GetAllPets();
 
@@ -47,8 +70,21 @@ namespace Animal_Shelter_WebProject.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult AddPet()
+        public IActionResult AddPet(string? dil, string? log)
         {
+            if (dil == "us")
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
+
+                TempData["dil"] = "us";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+
+                TempData["dil"] = "tr";
+            }
+
             return View();
         }
 
@@ -63,8 +99,21 @@ namespace Animal_Shelter_WebProject.Controllers
             //return View();
         }
         [HttpGet]
-        public IActionResult MyPets()
+        public IActionResult MyPets(string? dil, string? log)
         {
+            if (dil == "us")
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
+
+                TempData["dil"] = "us";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+
+                TempData["dil"] = "tr";
+            }
+
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
             var myPets = _service.GetById(userId);
