@@ -33,28 +33,41 @@ namespace Animal_Shelter_WebProject.Controllers
         [HttpPost]
         public IActionResult AdminLogin(AdminLoginDto adminLoginDto)
         {
-            var admin = _adminService.GetByEmail(adminLoginDto.AdminEmail);
+            //var admin = _adminService.GetByEmail(adminLoginDto.AdminEmail);
 
-            if (admin == null)
+            //if (admin == null)
+            //{
+            //    return View();
+            //}
+
+            if(adminLoginDto.AdminEmail=="g191210088@sakarya.edu.tr"|| adminLoginDto.AdminEmail == "G191210088@sakarya.edu.tr")
             {
-                return View();
+                if(adminLoginDto.AdminPassword=="sau")
+                {
+
+                    return RedirectToAction("Index", "Admin");
+                    //SaveCookie(adminLoginDto.AdminEmail);
+                }
+
+                
             }
 
+            return View();
             bool adminPass = false;
-            if (adminLoginDto.AdminPassword == admin.AdminPassword)
-            {
-                adminPass = true;
-            }
+            //if (adminLoginDto.AdminPassword == admin.AdminPassword)
+            //{
+            //    adminPass = true;
+            //}
 
-            if (!adminPass)
-            {
-                return View();
-            }
+            //if (!adminPass)
+            //{
+            //    return View();
+            //}
 
-            SaveCookie(admin.AdminEmail, admin.Id);
+            //SaveCookie(admin.AdminEmail, admin.Id);
 
             //return RedirectToAction("Index", "Information");
-            return RedirectToAction("Index", "Admin");
+            //return RedirectToAction("Index", "Admin");
         }
 
 

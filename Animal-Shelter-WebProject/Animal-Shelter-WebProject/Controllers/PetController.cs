@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Animal_Shelter_WebProject.Data;
 using Microsoft.AspNetCore.Authorization;
+using Animal_Shelter_WebProject.Models.Entities;
 
 namespace Animal_Shelter_WebProject.Controllers
 {
@@ -31,6 +32,8 @@ namespace Animal_Shelter_WebProject.Controllers
         public IActionResult Index(string? dil, string? log)
         {
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
+
+            ViewBag.UserId = userId;
 
             if(userId==0)
             {
@@ -133,6 +136,36 @@ namespace Animal_Shelter_WebProject.Controllers
         public IActionResult Adopt(PetGetDto petGetDto)
         {
             return RedirectToAction("Adoption", "Index", petGetDto);
+        }
+
+        [HttpGet]
+        public IActionResult EditPet(int petId, string? dil)
+        {
+            if (dil == "us")
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
+
+                TempData["dil"] = "us";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+
+                TempData["dil"] = "tr";
+            }
+            var pet=_service.GetByPetId(petId);
+
+
+            return View(pet);
+        }
+
+        [HttpPost]
+        public IActionResult EditPet(Pet pet,int petId)
+        {
+            _service.Update(pet,petId);
+
+
+            return RedirectToAction("MyPets");
         }
 
     }

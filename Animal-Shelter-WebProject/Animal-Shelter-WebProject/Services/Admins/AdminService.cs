@@ -1,5 +1,6 @@
 ﻿using Animal_Shelter_WebProject.Data;
 using Animal_Shelter_WebProject.Models.Dtos.Admin;
+using Animal_Shelter_WebProject.Models.Dtos.Pets;
 using Animal_Shelter_WebProject.Models.Entities;
 using Animal_Shelter_WebProject.Services.Password;
 using AutoMapper;
@@ -18,6 +19,18 @@ namespace Animal_Shelter_WebProject.Services.Admins
             _mapper = mapper;
         }
 
+        public void Create(AdminLoginDto adminLogin, int userId)
+        {
+            var admin = _mapper.Map<Admin>(adminLogin);
+
+
+            admin.AdminRole = "A";
+            
+
+            _context.Admins.Add(admin);
+            _context.SaveChanges();
+        }
+        
         public Admin GetById(int id)
         {
             var admin = _context.Admins.FirstOrDefault(x => x.Id == id);

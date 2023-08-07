@@ -1,6 +1,7 @@
 ﻿@{
     Layout = ViewBag.LayoutName;
     var dil = TempData["dil"];
+    int UserIdDis = ViewBag.UserId;
 }
 
 
@@ -47,9 +48,17 @@
                                     <td> @item.About </td>
                                     <td>
 
-                                        <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id" asp-route-dil="us">
-                                            <button type="submit" class="btn btn-primary">Adopt</button>
-                                        </a>
+                                        @if (item.UserId == UserIdDis)
+                                        {
+                                            <button type="submit" class="btn btn-primary" disabled="disabled">Your Animal</button>
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id" asp-route-dil="us">
+                                                <button type="submit" class="btn btn-primary">Adopt</button>
+                                            </a>
+                                        }
+
 
                                     </td>
                                 </tr>
@@ -108,9 +117,19 @@ else
                                     <td> @item.About </td>
                                     <td>
 
-                                        <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id">
-                                            <button type="submit" class="btn btn-primary">Sahiplen</button>
-                                        </a>
+
+                                        @if (item.UserId == UserIdDis)
+                                        {
+                                            <button type="submit" class="btn btn-primary" disabled="disabled">Hayvanın</button>
+                                           
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="Adoption" asp-action="Index" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id">
+                                                <button type="submit" class="btn btn-primary">Sahiplen</button>
+                                            </a>
+                                        }
+                                        
 
                                     </td>
                                 </tr>

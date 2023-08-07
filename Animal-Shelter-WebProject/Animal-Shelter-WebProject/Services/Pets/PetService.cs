@@ -1,5 +1,6 @@
 ﻿using Animal_Shelter_WebProject.Data;
 using Animal_Shelter_WebProject.Models.Dtos.Pets;
+using Animal_Shelter_WebProject.Models.Dtos.Users;
 using Animal_Shelter_WebProject.Models.Entities;
 using AutoMapper;
 
@@ -91,6 +92,28 @@ namespace Animal_Shelter_WebProject.Services.Pets
             //_context.Pets.ElementAt(petId).SurecDurumlari=surecDurumu;
 
             _context.SaveChanges();
+        }
+
+        public void Update(Pet pet, int petId)
+        {
+            
+
+            var petGet = _context.Pets.Where(x => x.Id == petId).FirstOrDefault();
+
+            petGet.Name= pet.Name;
+            petGet.Breed= pet.Breed;
+            petGet.Kisirlik= pet.Kisirlik;
+            petGet.Gender= pet.Gender;
+            petGet.AgeOrMonth= pet.AgeOrMonth;
+            petGet.About=pet.About;
+            petGet.Weight=pet.Weight;
+            //petGet.BirthDate= pet.BirthDate;
+
+            _context.SaveChanges();
+        }
+        public void Delete(int petId)
+        {
+
         }
     }
 }
