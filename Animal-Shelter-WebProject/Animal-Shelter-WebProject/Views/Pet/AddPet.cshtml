@@ -24,39 +24,39 @@
                             <form class="pt-3" asp-controller="Pet" asp-action="AddPet"  method="post">
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Name</label>
-                                    <input type="text" step="0.01" class="form-control form-control-lg" name="Name">
+                                    <input type="text" step="0.01" class="form-control form-control-lg" name="Name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1" class="control-label">Gender</label>
                                     <select class="form-select" aria-label="Default select example" asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()">
-                                        <option selected="selected"></option>
+                                        <option selected="selected" required></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Age</label>
-                                    <input type="number" step="0.01" class="form-control form-control-lg" name="AgeOrMonth">
+                                    <input type="number" step="0.01" class="form-control form-control-lg" name="AgeOrMonth" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Breed</label>
-                                    <input type="text" step="0.01" class="form-control form-control-lg" name="Breed">
+                                    <input type="text" step="0.01" class="form-control form-control-lg" name="Breed" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1" class="control-label">Date of Birth</label>
-                                    <input asp-for="BirthDate" class="form-control" />
+                                    <input asp-for="BirthDate" class="form-control" required />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Weight</label>
-                                    <input type="number" step="0.01" class="form-control form-control-lg" name="Weight">
+                                    <input type="number" step="0.01" class="form-control form-control-lg" name="Weight" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1" class="control-label">Have you been neutered?</label>
                                     <select class="form-select" aria-label="Default select example" asp-for="Kisirlik" asp-items="Html.GetEnumSelectList<Kisirlik>()">
-                                        <option selected="selected"></option>
+                                        <option selected="selected" required></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Explanation</label>
-                                    <input type="text" step="0.01" class="form-control form-control-lg" rows="4" name="About">
+                                    <input type="text" step="0.01" class="form-control form-control-lg" rows="4" name="About" required>
                                 </div>
 
                                 <div class="text-center">
@@ -87,34 +87,34 @@ else
                             <form class="pt-3" asp-controller="Pet" asp-action="AddPet" method="post">
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Adı</label>
-                                    <input type="text" step="0.01" class="form-control form-control-lg" name="Name">
+                                    <input type="text" step="0.01" class="form-control form-control-lg" name="Name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1" class="control-label">Cinsiyet</label>
                                     <select class="form-select" aria-label="Default select example" asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()">
-                                        <option selected="selected"></option>
+                                        <option selected="selected" required></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Yaşı</label>
-                                    <input type="number" step="0.01" class="form-control form-control-lg" name="AgeOrMonth">
+                                    <input type="number" step="0.01" class="form-control form-control-lg" name="AgeOrMonth" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Cinsi</label>
-                                    <input type="text" step="0.01" class="form-control form-control-lg" name="Breed">
+                                    <input type="text" step="0.01" class="form-control form-control-lg" name="Breed" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1" class="control-label">Doğum Tarihi</label>
-                                    <input asp-for="BirthDate" class="form-control" />
+                                    <input asp-for="BirthDate" class="form-control" required />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Kilo(Kg)</label>
-                                    <input type="number" step="0.01" class="form-control form-control-lg" name="Weight">
+                                    <input type="number" step="0.01" class="form-control form-control-lg" name="Weight" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1" class="control-label">Kısırlaştırma Yapıldı mı</label>
                                     <select class="form-select" aria-label="Default select example" asp-for="Kisirlik" asp-items="Html.GetEnumSelectList<Kisirlik>()">
-                                        <option selected="selected"></option>
+                                        <option selected="selected" required></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
