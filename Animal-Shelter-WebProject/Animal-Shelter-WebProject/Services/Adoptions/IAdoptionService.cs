@@ -11,6 +11,7 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
         public List<Adoption> GetBySahiplenenId(int sahiplenenId);
         public List<Adoption> GetAllAdoptions(SurecDurumlari surecDurumu);
         public void TalepDurumUpdate(int adoptionId, SurecDurumlari surecDurumu);
+        public void DeletePet(int petId);
     }
 }
 

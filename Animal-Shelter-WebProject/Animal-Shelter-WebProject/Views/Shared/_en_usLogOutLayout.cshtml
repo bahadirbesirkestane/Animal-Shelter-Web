@@ -91,7 +91,7 @@
                 <li class="nav-item nav-category">Main</li>
                 <br />
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Kayitsiz">
+                    <a class="nav-link" asp-controller="Home" asp-action="Kayitsiz" asp-route-dil="us">
                         <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                         <span class="menu-title">Home Page</span>
                     </a>
@@ -113,29 +113,23 @@
                 <br />
 
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Animal" asp-action="Index">
+                    <a class="nav-link" asp-controller="Pet" asp-action="Index" asp-route-dil="us">
                         <span class="icon-bg"><i class="mdi mdi mdi-gnome menu-icon"></i></span>
                         <span class="menu-title">Our Animal Friends</span>
                     </a>
                 </li>
                 <br />
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Product" asp-action="Index">
+                    <a class="nav-link" asp-controller="Home" asp-action="Kayitsiz" asp-route-dil="us">
                         <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
                         <span class="menu-title">PetShop</span>
                     </a>
                 </li>
-                <br />
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Information" asp-action="Index">
-                        <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-                        <span class="menu-title">My Information</span>
-                    </a>
-                </li>
+                
                 <br />
                 <li class="nav-item sidebar-user-actions">
                     <div class="sidebar-user-menu">
-                        <a asp-controller="Settings" asp-action="Index" class="nav-link">
+                        <a asp-controller="Home" asp-action="Kayitsiz" asp-route-dil="us" class="nav-link">
                             <i class="mdi mdi-settings menu-icon"></i>
                             <span class="menu-title">Settings</span>
                         </a>

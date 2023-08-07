@@ -3,6 +3,7 @@
 @model HomeViewModel
 @{
     int i = 0;
+    int j = 0;
     Layout = ViewBag.LayoutName;
     var dil = TempData["dil"];
 }
@@ -78,7 +79,7 @@
                                     <td> @item.Email </td>
                                     <td> @Model.Temp.ElementAt(i) </td>
                                     <td>
-                                        @if (Model.PetInfo.SurecDurumlari == SurecDurumlari.TalepOlusturuldu)
+                                        @if (Model.Adoptions.ElementAt(i).SurecDurumlari == SurecDurumlari.TalepOlusturuldu)
                                         {
                                             <a asp-controller="Adoption" asp-action="TalepOnayi" asp-route-sahiplenenUserId="@item.Id" asp-route-PetId="@Model.PetInfo.Id">
                                                 <button type="submit" class="btn btn-primary">Approve Request</button>
@@ -87,14 +88,14 @@
                                                 <button type="submit" class="btn btn-primary">Contact Us</button>
                                             </a>
                                         }
-                                        else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.AdminOnayiBekleniyor)
+                                        else if (Model.Adoptions.ElementAt(i).SurecDurumlari == SurecDurumlari.AdminOnayiBekleniyor)
                                         {
                                             <label>Waiting for Admin Approval</label>
 
                                             <button type="submit" class="btn btn-primary">Contact Us</button>
 
                                         }
-                                        else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.SahiplendirmeOnaylandi)
+                                        else if (Model.Adoptions.ElementAt(i).SurecDurumlari == SurecDurumlari.SahiplendirmeOnaylandi)
                                         {
                                             <label>Adoption Confirmed</label>
 
@@ -123,7 +124,6 @@ else
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Striped Table</h4>
                     <p class="card-description">
                         <h4 class="card-title">Hayvanlar</h4>
                     </p>
@@ -186,7 +186,7 @@ else
                                     <td> @item.Email </td>
                                     <td> @Model.Temp.ElementAt(i) </td>
                                     <td>
-                                        @if (Model.PetInfo.SurecDurumlari == SurecDurumlari.TalepOlusturuldu)
+                                        @if (Model.Adoptions.ElementAt(i).SurecDurumlari == SurecDurumlari.TalepOlusturuldu)
                                         {
                                             <a asp-controller="Adoption" asp-action="TalepOnayi" asp-route-sahiplenenUserId="@item.Id" asp-route-PetId="@Model.PetInfo.Id">
                                                 <button type="submit" class="btn btn-primary">Talebi Onayla</button>
@@ -195,14 +195,14 @@ else
                                                 <button type="submit" class="btn btn-primary">İletişime Geç</button>
                                             </a>
                                         }
-                                        else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.AdminOnayiBekleniyor)
+                                        else if (Model.Adoptions.ElementAt(i).SurecDurumlari == SurecDurumlari.AdminOnayiBekleniyor)
                                         {
                                             <label>Admin Onayı Bekleniyor</label>
 
                                             <button type="submit" class="btn btn-primary">İletişime Geç</button>
 
                                         }
-                                        else if (Model.PetInfo.SurecDurumlari == SurecDurumlari.SahiplendirmeOnaylandi)
+                                        else if (Model.Adoptions.ElementAt(i).SurecDurumlari == SurecDurumlari.SahiplendirmeOnaylandi)
                                         {
                                             <label>Sahiplendirme Onaylandı</label>
 

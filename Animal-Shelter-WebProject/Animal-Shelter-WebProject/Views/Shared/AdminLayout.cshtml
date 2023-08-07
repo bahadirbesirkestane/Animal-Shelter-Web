@@ -74,34 +74,7 @@
                             </div>
                             <div class="p-2">
                                 <h5 class="dropdown-header text-uppercase pl-2 text-dark">User Options</h5>
-                                <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" asp-controller="Medicine" asp-action="Index">
-                                    <span>Hayvanlarım</span>
-                                    <span class="p-0">
-                                        <span class="badge badge-primary">3</span>
-                                        <i class="mdi mdi-email-open-outline ml-1"></i>
-                                    </span>
-                                </a>
-                                <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" asp-controller="Medicine" asp-action="Index">
-                                    <span>Sepetim</span>
-                                    <span class="p-0">
-                                        <span class="badge badge-primary">3</span>
-                                        <i class="mdi mdi-email-open-outline ml-1"></i>
-                                    </span>
-                                </a>
-                                <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" asp-controller="Information" asp-action="Index">
-                                    <span>Bilgilerim</span>
-                                    <span class="p-0">
-                                        <span class="badge badge-success">1</span>
-                                        <i class="mdi mdi-account-outline ml-1"></i>
-                                    </span>
-                                </a>
-                                <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" asp-controller="Settings" asp-action="Index">
-                                    <span>Ayarlar</span>
-                                    <i class="mdi mdi-settings"></i>
-                                </a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <h5 class="dropdown-header text-uppercase  pl-2 text-dark mt-2">Actions</h5>
-
+                                
                                 <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" asp-controller="Account" asp-action="Logout">
                                     <span>Çıkış</span>
                                     <i class="mdi mdi-logout ml-1"></i>
@@ -187,21 +160,21 @@
                 <br />
 
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Animal" asp-action="Index">
+                    <a class="nav-link" asp-controller="Pet" asp-action="Index">
                         <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                        <span class="menu-title">Hayvan Dostlarımız</span>
+                        <span class="menu-title">Hayvanlar</span>
                     </a>
                 </li>
                 <br />
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Product" asp-action="Index">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">
                         <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                        <span class="menu-title">PetShop Ürünleri</span>
+                        <span class="menu-title">Kullanıcılar</span>
                     </a>
                 </li>
                 <br />
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Information" asp-action="Index">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">
                         <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
                         <span class="menu-title">Bilgilerim</span>
                     </a>
@@ -209,7 +182,7 @@
                 <br />
                 <li class="nav-item sidebar-user-actions">
                     <div class="sidebar-user-menu">
-                        <a asp-controller="Settings" asp-action="Index" class="nav-link">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link">
                             <i class="mdi mdi-settings menu-icon"></i>
                             <span class="menu-title">Ayarlar</span>
                         </a>

@@ -15,6 +15,7 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
         }
         public void Create(int petId, int sahiplenenId, int sahibiId, int sahiplenmeBilgisi)
         {
+
             Adoption adoption = new Adoption();
             //string sahiplenme = "";
             if (sahiplenmeBilgisi == 0)
@@ -85,6 +86,22 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
 
 
             _context.SaveChanges();
+        }
+
+        public void DeletePet(int petId)
+        {
+            var adoptions = _context.Adoptions.Where(x => x.Pet == petId).ToList();
+
+            foreach (var item in adoptions)
+            {
+                if (item != null)
+                {
+                    _context.Remove(item);
+                    _context.SaveChanges();
+                }
+            }
+
+            
         }
     }
 }

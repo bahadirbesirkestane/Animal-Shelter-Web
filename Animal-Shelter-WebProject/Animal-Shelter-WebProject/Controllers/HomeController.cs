@@ -17,16 +17,41 @@ namespace Animal_Shelter_WebProject.Controllers
         }
 
         [Authorize]
-        public IActionResult Index()
+        public IActionResult Index(string? dil)
         {
+            if (dil == "us")
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
+
+                TempData["dil"] = "us";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_Layout.cshtml";
+
+                TempData["dil"] = "tr";
+            }
             return View();
         }
 
-        public IActionResult Kayitsiz()
+        public IActionResult Kayitsiz(string? dil)
         {
             HttpContext.SignOutAsync();
 
             HttpContext.Session.Clear();
+
+            if (dil == "us")
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_en_usLogOutLayout.cshtml";
+
+                TempData["dil"] = "us";
+            }
+            else
+            {
+                ViewBag.LayoutName = "~/Views/Shared/_LogOutLayout.cshtml";
+
+                TempData["dil"] = "tr";
+            }
 
             return View();
         }

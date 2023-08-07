@@ -113,7 +113,13 @@ namespace Animal_Shelter_WebProject.Services.Pets
         }
         public void Delete(int petId)
         {
+            var petGet = _context.Pets.Where(x => x.Id == petId).FirstOrDefault();
 
+            if (petGet != null)
+            {
+                _context.Remove(petGet);
+                _context.SaveChanges();
+            }
         }
     }
 }

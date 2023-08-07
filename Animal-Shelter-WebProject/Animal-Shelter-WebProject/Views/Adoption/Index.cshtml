@@ -76,25 +76,39 @@
                             <div class="row flex-grow">
                                 <div class="col-lg-4 mx-auto-left">
                                     <div class="auth-form-light text-left p-5">
-                                        <div class="brand-logo text-center">
-                                            <h4>Form</h4>
-                                        </div>
-
-                                        <form class="pt-3" asp-controller="Adoption" asp-action="RequestAdoption" asp-route-petId="@Model.PetInfo.Id" method="post">
-
-                                            <div class="form-group">
-                                                <label for="exampleInputUsername1" class="control-label">Have you ever adopted a pet from anywhere?</label>
-                                                <select class="form-select" aria-label="Default select example" data-val="true" data-val-required="The Gender field is required." id="sahiplenmeBilgisi" name="sahiplenmeBilgisi" required>
-                                                    <option selected="selected"></option>
-                                                    <option value="0">Yes, I have owned an animal before.</option>
-                                                    <option value="1">No, I've never had an animal before.</option>
-
-                                                </select>
+                                        @if(Model.Adoptions!=null)
+                                        {
+                                            if(Model.Adoptions.Count!=0)
+                                            {
+                                                <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-dil="us">
+                                                    <button type="button" class="btn btn-primary btn-lg">You have applied for ownership for this animal</button>
+                                                </a>
+                                                
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="brand-logo text-center">
+                                                <h4>Form</h4>
                                             </div>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
-                                            </div>
-                                        </form>
+
+                                            <form class="pt-3" asp-controller="Adoption" asp-action="RequestAdoption" asp-route-petId="@Model.PetInfo.Id" method="post">
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputUsername1" class="control-label">Have you ever adopted a pet from anywhere?</label>
+                                                    <select class="form-select" aria-label="Default select example" data-val="true" data-val-required="The Gender field is required." id="sahiplenmeBilgisi" name="sahiplenmeBilgisi" required>
+                                                        <option selected="selected"></option>
+                                                        <option value="0">Yes, I have owned an animal before.</option>
+                                                        <option value="1">No, I've never had an animal before.</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
+                                                </div>
+                                            </form>
+                                        }
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -174,25 +188,39 @@ else
                             <div class="row flex-grow">
                                 <div class="col-lg-4 mx-auto-left">
                                     <div class="auth-form-light text-left p-5">
-                                        <div class="brand-logo text-center">
-                                            <h4>Form</h4>
-                                        </div>
-
-                                        <form class="pt-3" asp-controller="Adoption" asp-action="RequestAdoption" asp-route-petId="@Model.PetInfo.Id" method="post">
-
-                                            <div class="form-group">
-                                                <label for="exampleInputUsername1" class="control-label">Daha önce herhangi bir yerden hayvan sahiplendiniz mi ?</label>
-                                                <select class="form-select" aria-label="Default select example" data-val="true" data-val-required="The Gender field is required." id="sahiplenmeBilgisi" name="sahiplenmeBilgisi" required>
-                                                    <option selected="selected"></option>
-                                                    <option value="0">Evet Sahiplendim</option>
-                                                    <option value="1">Hayır Sahiplenmedim</option>
-
-                                                </select>
+                                        @if (Model.Adoptions != null)
+                                        {
+                                            if (Model.Adoptions.Count != 0)
+                                            {
+                                                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                                    <button type="button" class="btn btn-primary btn-lg">Bu hayvan için sahiplenme başvurusunda bulundunuz</button>
+                                                </a>
+                                                
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="brand-logo text-center">
+                                                <h4>Form</h4>
                                             </div>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-primary btn-lg">Talep Oluştur</button>
-                                            </div>
-                                        </form>
+
+                                            <form class="pt-3" asp-controller="Adoption" asp-action="RequestAdoption" asp-route-petId="@Model.PetInfo.Id" method="post">
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputUsername1" class="control-label">Daha önce herhangi bir yerden hayvan sahiplendiniz mi ?</label>
+                                                    <select class="form-select" aria-label="Default select example" data-val="true" data-val-required="The Gender field is required." id="sahiplenmeBilgisi" name="sahiplenmeBilgisi" required>
+                                                        <option selected="selected"></option>
+                                                        <option value="0">Evet Sahiplendim</option>
+                                                        <option value="1">Hayır Sahiplenmedim</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary btn-lg">Talep Oluştur</button>
+                                                </div>
+                                            </form>
+                                        }
+                                        
                                     </div>
                                 </div>
                             </div>

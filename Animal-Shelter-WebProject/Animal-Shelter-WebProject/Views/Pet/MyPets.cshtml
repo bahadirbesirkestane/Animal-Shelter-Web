@@ -48,7 +48,7 @@
                                     <td> @item.About </td>
                                     <td>
                                         <a asp-controller="Pet" asp-action="EditPet" asp-route-petId="@item.Id" asp-route-dil="us">Edit</a> |
-                                        <a asp-action="Delete" asp-route-petId="@item.Id" asp-route-dil="us">Delete</a>
+                                        <a asp-controller="Pet" asp-action="DeletePet" asp-route-petId="@item.Id" asp-route-dil="us">Delete</a>
                                     </td>
                                     <td>
                                         <a asp-controller="Adoption" asp-action="Talepler" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id" asp-route-dil="us" desabled>
@@ -114,7 +114,7 @@ else
                                     <td> @item.About </td>
                                     <td>
                                         <a asp-controller="Pet" asp-action="EditPet" asp-route-petId="@item.Id">Düzenle</a> |
-                                        <a asp-controller="Pet" asp-action="Delete" asp-route-petId="@item.Id">Sil</a>
+                                        <a asp-controller="Pet" asp-action="DeletePet" asp-route-petId="@item.Id">Sil</a>
                                     </td>
                                     <td>
                                         <a asp-controller="Adoption" asp-action="Talepler" asp-route-petUserId="@item.UserId" asp-route-petId="@item.Id" desabled>

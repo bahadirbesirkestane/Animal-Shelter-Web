@@ -46,12 +46,22 @@ namespace Animal_Shelter_WebProject.Controllers
 
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
-            
+            var adoptionsGet=_adoptionService.GetBySahiplenenId(userId);
+            var adoptions= new List<Adoption>();
 
+            foreach (var item in adoptionsGet)
+            {
+                if(item.Pet==petId)
+                {
+                    adoptions.Add(item);
+                    break;
+                }
+            }
             var homeViewModel = new HomeViewModel()
             {
                 PetInfo = _petService.GetByPetId(petId),
                 UserInfo = _userService.GetById(petUserId),
+                Adoptions= adoptions,
 
             };
 
@@ -198,7 +208,7 @@ namespace Animal_Shelter_WebProject.Controllers
             _adoptionService.TalepDurumUpdate(adoption.Id, SurecDurumlari.SahiplendirmeOnaylandi);
             _petService.TalepDurumUpdate(adoption.Pet, SurecDurumlari.SahiplendirmeOnaylandi);
 
-            return View();
+            return RedirectToAction("Index","Admin");
         }
 
     }

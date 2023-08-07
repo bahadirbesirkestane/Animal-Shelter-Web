@@ -104,6 +104,7 @@ namespace Animal_Shelter_WebProject.Controllers
         [HttpGet]
         public IActionResult MyPets(string? dil, string? log)
         {
+            
             if (dil == "us")
             {
                 ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
@@ -166,6 +167,14 @@ namespace Animal_Shelter_WebProject.Controllers
 
 
             return RedirectToAction("MyPets");
+        }
+
+        [HttpGet]
+        public IActionResult DeletePet(int petId,string? dil)
+        {
+            _service.Delete(petId);
+            _adoptionService.DeletePet(petId);
+            return View();
         }
 
     }
