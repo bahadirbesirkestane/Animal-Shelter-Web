@@ -1,0 +1,236 @@
+﻿@{
+    Layout = ViewBag.LayoutName;
+    var dil = TempData["dil"];
+}
+
+
+@using Animal_Shelter_WebProject.Models.Dtos;
+
+@model HomeViewModel
+
+
+@if(dil=="us")
+{
+
+    <div>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body"> <h4 class="card-title">Striped Table</h4>
+                    <p class="card-description">
+                        <h4 class="card-title">Animal's Information </h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Name </th>
+                                <th> Gender </th>
+                                <th> Age </th>
+                                <th> Breed </th>
+                                <th> Date of Birth </th>
+                                <th> Weight </th>
+                                <th> Neutered </th>
+                                <th> Explanation </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.PetInfo.Name </td>
+                                <td>@Model.PetInfo.Gender</td>
+                                <td> @Model.PetInfo.AgeOrMonth </td>
+                                <td> @Model.PetInfo.Breed </td>
+                                <td> @Model.PetInfo.BirthDate.Value.Day.@Model.PetInfo.BirthDate.Value.Month.@Model.PetInfo.BirthDate.Value.Year </td>
+                                <td> @Model.PetInfo.Weight </td>
+                                <td> @Model.PetInfo.Kisirlik </td>
+                                <td> @Model.PetInfo.About </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="card-description">
+                        <h4 class="card-title">Information of the Owner of the Animal</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Firstname </th>
+                                <th> Lastname </th>
+                                <th> Email </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.UserInfo.FirstName </td>
+                                <td>@Model.UserInfo.LastName</td>
+                                <td> @Model.UserInfo.Email </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <div class="container-scroller">
+                    <div class="container-fluid page-body-wrapper full-page-wrapper">
+                        <div class="content-wrapper d-flex align-items auth">
+                            <div class="row flex-grow">
+                                <div class="col-lg-4 mx-auto-left">
+                                    <div class="auth-form-light text-left p-5">
+                                        @if (Model.Adoptions.Count != 0)
+                                        {
+                                            if(Model.Adoptions.Count!=0)
+                                            {
+                                                <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-dil="us">
+                                                    <button type="button" class="btn btn-primary btn-lg">You have applied for ownership for this animal</button>
+                                                </a>
+                                                
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="brand-logo text-center">
+                                                <h4>Form</h4>
+                                            </div>
+
+                                            <form class="pt-3" asp-controller="Adoption" asp-action="RequestAdoption" asp-route-petId="@Model.PetInfo.Id" method="post">
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputUsername1" class="control-label">Have you ever adopted a pet from anywhere?</label>
+                                                    <select class="form-select" aria-label="Default select example" data-val="true" data-val-required="The Gender field is required." id="sahiplenmeBilgisi" name="sahiplenmeBilgisi" required>
+                                                        <option selected="selected"></option>
+                                                        <option value="0">Yes, I have owned an animal before.</option>
+                                                        <option value="1">No, I've never had an animal before.</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary btn-lg">Submit Request</button>
+                                                </div>
+                                            </form>
+                                        }
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+
+    <div>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Striped Table</h4>
+                    <p class="card-description">
+                        <h4 class="card-title">Hayvanın Bilgileri</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Adı </th>
+                                <th> Cinsiyeti</th>
+                                <th> Yaşı </th>
+                                <th> Cinsi </th>
+                                <th> Doğum Tarihi </th>
+                                <th> Kilo </th>
+                                <th> Kısırlık </th>
+                                <th> Açıklama </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.PetInfo.Name </td>
+                                <td>@Model.PetInfo.Gender</td>
+                                <td> @Model.PetInfo.AgeOrMonth </td>
+                                <td> @Model.PetInfo.Breed </td>
+                                <td> @Model.PetInfo.BirthDate.Value.Day.@Model.PetInfo.BirthDate.Value.Month.@Model.PetInfo.BirthDate.Value.Year </td>
+                                <td> @Model.PetInfo.Weight </td>
+                                <td> @Model.PetInfo.Kisirlik </td>
+                                <td> @Model.PetInfo.About </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="card-description">
+                        <h4 class="card-title">Hayvanın Sahibinin Bilgileri</h4>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Adı </th>
+                                <th> Soyadı </th>
+                                <th> Email </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.UserInfo.FirstName </td>
+                                <td>@Model.UserInfo.LastName</td>
+                                <td> @Model.UserInfo.Email </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <div class="container-scroller">
+                    <div class="container-fluid page-body-wrapper full-page-wrapper">
+                        <div class="content-wrapper d-flex align-items auth">
+                            <div class="row flex-grow">
+                                <div class="col-lg-4 mx-auto-left">
+                                    <div class="auth-form-light text-left p-5">
+                                        @if (Model.Adoptions.Count != 0)
+                                        {
+                                            if (Model.Adoptions.Count != 0)
+                                            {
+                                                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                                    <button type="button" class="btn btn-primary btn-lg">Bu hayvan için sahiplenme başvurusunda bulundunuz</button>
+                                                </a>
+                                                
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="brand-logo text-center">
+                                                <h4>Form</h4>
+                                            </div>
+
+                                            <form class="pt-3" asp-controller="Adoption" asp-action="RequestAdoption" asp-route-petId="@Model.PetInfo.Id" method="post">
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputUsername1" class="control-label">Daha önce herhangi bir yerden hayvan sahiplendiniz mi ?</label>
+                                                    <select class="form-select" aria-label="Default select example" data-val="true" data-val-required="The Gender field is required." id="sahiplenmeBilgisi" name="sahiplenmeBilgisi" required>
+                                                        <option selected="selected"></option>
+                                                        <option value="0">Evet Sahiplendim</option>
+                                                        <option value="1">Hayır Sahiplenmedim</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary btn-lg">Talep Oluştur</button>
+                                                </div>
+                                            </form>
+                                        }
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
