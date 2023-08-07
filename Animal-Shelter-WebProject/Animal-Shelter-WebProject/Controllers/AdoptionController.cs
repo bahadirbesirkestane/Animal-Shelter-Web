@@ -12,6 +12,8 @@ namespace Animal_Shelter_WebProject.Controllers
 {
     public class AdoptionController : Controller
     {
+        // Servis ve Veritabanı context tanımlamaları
+
         private readonly Animal_Shelter_WebProjectDBContext _context;
         private readonly IMapper _mapper;
         private readonly IAdoptionService _adoptionService;
@@ -27,9 +29,14 @@ namespace Animal_Shelter_WebProject.Controllers
             _adoptionService = adoptionService;
         }
 
+        // Hayvan Sahiplenme form sayfası
+
         [Authorize]
         public IActionResult Index(int petUserId, int petId,string? dil)
         {
+
+            //Dil Geçişleri
+
             if (dil == "us")
             {
                 ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
@@ -48,6 +55,8 @@ namespace Animal_Shelter_WebProject.Controllers
 
             var adoptionsGet=_adoptionService.GetBySahiplenenId(userId);
             var adoptions= new List<Adoption>();
+
+            // Kullanıcı bilgilerini ve seçilen hayvan için veri döndüren tanımlamalar
 
             foreach (var item in adoptionsGet)
             {
@@ -68,8 +77,11 @@ namespace Animal_Shelter_WebProject.Controllers
             return View(homeViewModel);
         }
 
+        // Kullanıcının hayvanlarına gelen talepler sayfası
         public IActionResult Talepler(int petUserId, int petId,string? dil)
         {
+            // Dil seçenekleri
+
             if (dil == "us")
             {
                 ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
@@ -85,9 +97,10 @@ namespace Animal_Shelter_WebProject.Controllers
 
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
+            // Hayvan ve talep bilgileri servisten çekiliyor.
             var pet = _petService.GetByPetId(petId);
-
             var talepler = _adoptionService.GetByPetId(petId);
+
 
             List<User> sahiplenenler = new List<User>();
             List<string> sahiplenmeBilgileri = new List<string>();
@@ -97,6 +110,8 @@ namespace Animal_Shelter_WebProject.Controllers
                 sahiplenenler.Add(_userService.GetById(talep.Sahiplenen));
                 sahiplenmeBilgileri.Add(talep.SahiplenmeBilgisi);
             }
+
+            // Hayvanın, hayvan sahibinin ve sahiplenmek isteyen kullanıcın bilgileri view e gönderiliyor.
 
             var homeViewModel = new HomeViewModel()
             {
@@ -109,6 +124,8 @@ namespace Animal_Shelter_WebProject.Controllers
             return View(homeViewModel);
         }
 
+        // Sahiplenme talebi Action ı
+
         [HttpPost]
         public IActionResult RequestAdoption(int petId, int sahiplenmeBilgisi)
         {
@@ -117,23 +134,19 @@ namespace Animal_Shelter_WebProject.Controllers
             var pet = _petService.GetByPetId(petId);
 
 
-
+            // Yeni sahiplenme durumu oluşturuluyor.
             _adoptionService.Create(petId, userId, pet.UserId, sahiplenmeBilgisi);
 
             _petService.TalepDurumUpdate(petId, SurecDurumlari.TalepOlusturuldu);
 
-            var homeViewModel = new HomeViewModel()
-            {
-                PetInfo = pet,
-                UserInfo = _userService.GetById(pet.UserId),
-
-            };
-
             return RedirectToAction("Index", "Home");
         }
 
+        // Kullanıcının yapmış olduğu sahiplenme isteklerini görüntülediği sayfa action ı
         public IActionResult MyAdoption(string? dil, string? log)
         {
+            // Dil seçenekleri
+
             if (dil == "us")
             {
                 ViewBag.LayoutName = "~/Views/Shared/_en_usLayout.cshtml";
@@ -155,9 +168,11 @@ namespace Animal_Shelter_WebProject.Controllers
 
             List<SurecDurumlari> surecler = new List<SurecDurumlari>();
 
+            // İstekler ve Hayvanlar servisten çekiliyor.
+
             foreach (var item in MyAdoption)
             {
-                // buraya bak
+                
                 sahiplenenPet.Add(_petService.GetByPetId(item.Pet));
                 surecler.Add(item.SurecDurumlari);
             }
@@ -173,7 +188,7 @@ namespace Animal_Shelter_WebProject.Controllers
             return View(homeViewModel);
         }
 
-        //[HttpPost]
+        // Hayvan Sahibinin talepleri onaylama işlemi
         public IActionResult TalepOnayi(int sahiplenenUserId, int PetId)
         {
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
@@ -187,7 +202,8 @@ namespace Animal_Shelter_WebProject.Controllers
                 if (item.Sahiplenen == sahiplenenUserId)
                 {
                     adoption = item;
-                    //adoption.SurecDurumlari = SurecDurumlari.AdminOnayiBekleniyor;,
+                    
+                    // Talep durumu hayvan sahibinin onaylaması ile birlikte admin onayı gerektiriyor.
 
                     _adoptionService.TalepDurumUpdate(adoption.Id, SurecDurumlari.AdminOnayiBekleniyor);
                     _petService.TalepDurumUpdate(adoption.Pet, SurecDurumlari.AdminOnayiBekleniyor);
@@ -195,12 +211,12 @@ namespace Animal_Shelter_WebProject.Controllers
                 }
 
             }
-            //var pet=_adoptionService.
-            //_petService.TalepDurumUpdate()
+            
 
             return RedirectToAction("Index", "Home");
         }
 
+        // Sahiplendirme işleminin onaylanma işlemi
         public IActionResult Onaylandi(int adoptionId)
         {
             var adoption=_adoptionService.GetById(adoptionId);

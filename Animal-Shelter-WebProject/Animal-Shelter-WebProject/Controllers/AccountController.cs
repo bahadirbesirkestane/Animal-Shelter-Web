@@ -13,6 +13,8 @@ namespace Animal_Shelter_WebProject.Controllers
 {
     public class AccountController : Controller
     {
+        // Servis ve Veritabanı context tanımlamaları
+
         private readonly Animal_Shelter_WebProjectDBContext _context;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IUserService _userService;
@@ -25,6 +27,7 @@ namespace Animal_Shelter_WebProject.Controllers
             _adminService = adminService;
         }
 
+        // Admin Login sayfası Action
         [HttpGet]
         public IActionResult AdminLogin()
         {
@@ -33,6 +36,21 @@ namespace Animal_Shelter_WebProject.Controllers
         [HttpPost]
         public IActionResult AdminLogin(AdminLoginDto adminLoginDto)
         {
+            // Admin Kayıtı normal sartlarda veritabanına kayıt edilecek şekilde yapılmıştır.
+
+            if (adminLoginDto.AdminEmail == "g191210088@sakarya.edu.tr" || adminLoginDto.AdminEmail == "G191210088@sakarya.edu.tr")
+            {
+                if (adminLoginDto.AdminPassword == "sau")
+                {
+
+                    return RedirectToAction("Index", "Admin");
+                    //SaveCookie(adminLoginDto.AdminEmail);
+                }
+
+
+            }
+
+
             //var admin = _adminService.GetByEmail(adminLoginDto.AdminEmail);
 
             //if (admin == null)
@@ -40,20 +58,8 @@ namespace Animal_Shelter_WebProject.Controllers
             //    return View();
             //}
 
-            if(adminLoginDto.AdminEmail=="g191210088@sakarya.edu.tr"|| adminLoginDto.AdminEmail == "G191210088@sakarya.edu.tr")
-            {
-                if(adminLoginDto.AdminPassword=="sau")
-                {
-
-                    return RedirectToAction("Index", "Admin");
-                    //SaveCookie(adminLoginDto.AdminEmail);
-                }
-
-                
-            }
-
-            return View();
-            bool adminPass = false;
+           
+            //bool adminPass = false;
             //if (adminLoginDto.AdminPassword == admin.AdminPassword)
             //{
             //    adminPass = true;
@@ -66,12 +72,14 @@ namespace Animal_Shelter_WebProject.Controllers
 
             //SaveCookie(admin.AdminEmail, admin.Id);
 
-            //return RedirectToAction("Index", "Information");
+            
             //return RedirectToAction("Index", "Admin");
+
+            return View();
         }
 
 
-
+        // Kulllanıcı Login Action
 
         [HttpGet]
         public IActionResult Login()
@@ -90,6 +98,7 @@ namespace Animal_Shelter_WebProject.Controllers
                 return View();
             }
 
+            // Sifre dogrulamasi
             var password = _passwordHasher.VerifyPassword(userLoginDto.Password, user.Password);
 
 
@@ -104,6 +113,7 @@ namespace Animal_Shelter_WebProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // Kullanıcı Kayıt Ekranı
         [HttpGet]
         public IActionResult Register()
         {
@@ -120,6 +130,7 @@ namespace Animal_Shelter_WebProject.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
         [HttpGet]
         public IActionResult LogOut()
         {
@@ -129,6 +140,9 @@ namespace Animal_Shelter_WebProject.Controllers
 
             return RedirectToAction("Kayitsiz", "Home");
         }
+
+        // cookie kaydı
+
         [NonAction]
         private void SaveCookie(string email, int id)
         {

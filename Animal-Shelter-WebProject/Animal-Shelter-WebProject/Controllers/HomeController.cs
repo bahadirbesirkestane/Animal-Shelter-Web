@@ -16,6 +16,8 @@ namespace Animal_Shelter_WebProject.Controllers
             _logger = logger;
         }
 
+        // Ana Sayfa Log In
+
         [Authorize]
         public IActionResult Index(string? dil)
         {
@@ -33,6 +35,8 @@ namespace Animal_Shelter_WebProject.Controllers
             }
             return View();
         }
+
+        // Ana sayfa Log Out
 
         public IActionResult Kayitsiz(string? dil)
         {

@@ -11,6 +11,8 @@ namespace Animal_Shelter_WebProject.Controllers
 {
     public class AdminController : Controller
     {
+        // Servis ve Veritabanı context tanımlamaları
+
         private readonly Animal_Shelter_WebProjectDBContext _context;
         private readonly IMapper _mapper;
         private readonly IAdoptionService _adoptionService;
@@ -30,6 +32,7 @@ namespace Animal_Shelter_WebProject.Controllers
             return View();
         }
 
+        // Admin panelindeki onay talepleri action ı
         [HttpGet]
         public IActionResult OnayTalepleri()
         {

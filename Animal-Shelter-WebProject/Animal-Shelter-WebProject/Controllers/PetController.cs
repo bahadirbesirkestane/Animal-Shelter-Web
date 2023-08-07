@@ -13,6 +13,8 @@ namespace Animal_Shelter_WebProject.Controllers
 {
     public class PetController : Controller
     {
+        // Servis ve Veritabanı context tanımlamaları
+
         private readonly Animal_Shelter_WebProjectDBContext _context;
         private readonly IMapper _mapper;
         private readonly IPetService _service;
@@ -28,12 +30,18 @@ namespace Animal_Shelter_WebProject.Controllers
             _adoptionService = adoptionService;
         }
         
+        // Barınaktaki Hayvanları listeleyen action
+        
+
         [HttpGet]
         public IActionResult Index(string? dil, string? log)
         {
             var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
 
             ViewBag.UserId = userId;
+
+            // Bu sayfaya log In olmadan da girelebileceği için authorize yapılmamıştır.
+            // Dil seçenekleri ve layout login/logout durumuna göre seçilir
 
             if(userId==0)
             {
@@ -71,6 +79,8 @@ namespace Animal_Shelter_WebProject.Controllers
             return View(pets);
         }
 
+        // Hayvan Ekleme Acion Get 
+
         [Authorize]
         [HttpGet]
         public IActionResult AddPet(string? dil, string? log)
@@ -91,6 +101,8 @@ namespace Animal_Shelter_WebProject.Controllers
             return View();
         }
 
+        // Hayvan Ekleme Acion Post
+
         [HttpPost]
         public IActionResult AddPet(PetAddDto petAddDto)
         {
@@ -101,6 +113,9 @@ namespace Animal_Shelter_WebProject.Controllers
             return RedirectToAction("Index");
             //return View();
         }
+
+        // Hayvanlarım sayfası kişinin hayvanları görüntülenir
+
         [HttpGet]
         public IActionResult MyPets(string? dil, string? log)
         {
@@ -126,11 +141,12 @@ namespace Animal_Shelter_WebProject.Controllers
 
             return View(myPets);
         }
+
+        
+
         [HttpGet]
         public IActionResult Adopt()
         {
-            var userId = Convert.ToInt32(HttpContext.Session.GetString("userId"));
-
             return View();
         }
         [HttpPost]
@@ -139,6 +155,9 @@ namespace Animal_Shelter_WebProject.Controllers
             return RedirectToAction("Adoption", "Index", petGetDto);
         }
 
+
+        // Hayvanın Bilgilerini güncelleme sayfası Get
+        
         [HttpGet]
         public IActionResult EditPet(int petId, string? dil)
         {
@@ -159,7 +178,7 @@ namespace Animal_Shelter_WebProject.Controllers
 
             return View(pet);
         }
-
+        // Hayvanın Bilgilerini güncelleme sayfası Post
         [HttpPost]
         public IActionResult EditPet(Pet pet,int petId)
         {
@@ -168,6 +187,8 @@ namespace Animal_Shelter_WebProject.Controllers
 
             return RedirectToAction("MyPets");
         }
+
+        // Hayvanı silme işlemi
 
         [HttpGet]
         public IActionResult DeletePet(int petId,string? dil)

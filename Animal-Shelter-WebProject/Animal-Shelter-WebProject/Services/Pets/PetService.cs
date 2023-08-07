@@ -15,6 +15,8 @@ namespace Animal_Shelter_WebProject.Services.Pets
             _context = context;
             _mapper = mapper;
         }
+
+        // Hayvan ekleme işlemi
         public void Create(PetAddDto petAddDto, int userId)
         {
             var pet = _mapper.Map<Pet>(petAddDto);
@@ -27,6 +29,7 @@ namespace Animal_Shelter_WebProject.Services.Pets
             _context.SaveChanges();
         }
 
+        // Hayvanları listeleme
         public List<PetGetDto> GetAll(int userId)
         {
             var pets = (from Pets in _context.Pets
@@ -57,6 +60,7 @@ namespace Animal_Shelter_WebProject.Services.Pets
 
         }
 
+
         public Pet GetByPetId(int petId)
         {
             var pet = _context.Pets.Where(x => x.Id == petId).FirstOrDefault();
@@ -81,6 +85,7 @@ namespace Animal_Shelter_WebProject.Services.Pets
             return myPets;
         }
 
+        // Talep durumu her hayvan için ayrı tutulur ve herhangi kişinin sonuca daha yakın olan işlemi yazılır
         public void TalepDurumUpdate(int petId, SurecDurumlari surecDurumu)
         {
             var pet = _context.Pets.Where(x => x.Id == petId).FirstOrDefault();
@@ -94,6 +99,7 @@ namespace Animal_Shelter_WebProject.Services.Pets
             _context.SaveChanges();
         }
 
+        // Hayvanın bilgilerini güncelleme işlemi
         public void Update(Pet pet, int petId)
         {
             
@@ -111,6 +117,8 @@ namespace Animal_Shelter_WebProject.Services.Pets
 
             _context.SaveChanges();
         }
+
+        // Hayvanı silme işlemi
         public void Delete(int petId)
         {
             var petGet = _context.Pets.Where(x => x.Id == petId).FirstOrDefault();

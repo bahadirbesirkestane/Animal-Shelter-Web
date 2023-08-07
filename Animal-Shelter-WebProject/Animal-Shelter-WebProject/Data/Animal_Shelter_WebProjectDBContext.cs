@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 
 namespace Animal_Shelter_WebProject.Data
 {
+    // Veritabanı tabloları
     public class Animal_Shelter_WebProjectDBContext : DbContext
     {
         public Animal_Shelter_WebProjectDBContext(DbContextOptions<Animal_Shelter_WebProjectDBContext> options) : base(options)

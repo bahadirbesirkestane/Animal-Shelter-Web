@@ -13,6 +13,8 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
             _context = context;
             _mapper = mapper;
         }
+
+        // Sahiplenme durumu oluşturulması ve veritabanına kaydı
         public void Create(int petId, int sahiplenenId, int sahibiId, int sahiplenmeBilgisi)
         {
 
@@ -36,6 +38,8 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
             _context.SaveChanges();
 
         }
+
+        
         public Adoption GetById(int Id)
         {
             var adoption = _context.Adoptions.Where(x => x.Id == Id).FirstOrDefault();
@@ -72,6 +76,8 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
             return adoptions;
         }
 
+
+        // Gelen talepe göre talep durumunu güncelleme işlemi
         public void TalepDurumUpdate(int adoptionId, SurecDurumlari surecDurumu)
         {
             var adoption = _context.Adoptions.Where(x => x.Id == adoptionId).FirstOrDefault();
@@ -88,6 +94,8 @@ namespace Animal_Shelter_WebProject.Services.Adoptions
             _context.SaveChanges();
         }
 
+        // Hayvanın silinme durumunda hayvana gelen isteklerinde silinme işlemi.
+        
         public void DeletePet(int petId)
         {
             var adoptions = _context.Adoptions.Where(x => x.Pet == petId).ToList();

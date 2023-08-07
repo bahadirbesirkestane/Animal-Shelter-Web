@@ -1,5 +1,6 @@
 ﻿namespace Animal_Shelter_WebProject.Data
 {
+    // Cinsiyet 
     public enum Gender
     {
         Erkek = 0,
@@ -7,6 +8,7 @@
         Diger = 2,
     }
 
+    // Hayvanıb kısırlık durumları
     public enum Kisirlik
     {
         Evet = 0,
@@ -14,6 +16,8 @@
         Belirtilmedi = 2,
     }
 
+    // Sahiplenme surec durumları
+    // Hayvanlar ilk olusturuldugunda "talep yok" olarak atanır.
     public enum SurecDurumlari
     {
         TalepYok = 0,
